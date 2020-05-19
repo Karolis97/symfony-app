@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gėles{% endblock %}
+
+{% block body %}
+  {% if flowers %}
+    <table id="flowers" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Pavadinimas</th>
+          <th>Adresas</th>
+          <th>Pristatymo laikas</th>
+          <th>Veiksmai</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for flowers in flowers %}
+          <tr>
+            <td>{{ flowers.name }}</td>
+            <td>{{ flowers.address }}</td>
+            <td>{{ flowers.deliveron|date('Y-m-d H:i:s') }}</td>
+            <td>
+              <a href="/flowers/json/{{ flowers.id }}" class="btn btn-dark">JSON</a>
+              <a href="/flowers/xml/{{ flowers.id }}" class="btn btn-light">XML</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>Šiuo metu užsakymų nėra.</p>
+  {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+  <script src="/js/main.js"></script>
+{% endblock %}

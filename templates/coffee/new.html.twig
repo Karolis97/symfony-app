@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gėlių užsakymas{% endblock %}
+
+{% block body %}
+    <style>
+    #form_milktype {
+        display: none;
+    }
+    #milktype_label {
+        display: none;
+    }
+    </style>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+    <script>
+    var form_location;
+    function initAutocomplete() {
+        form_location = new google.maps.places.Autocomplete(
+        document.getElementById('form_location'), {types: ['geocode']});
+        form_location.setFields(['address_component']);
+        form_location.addListener('place_changed', fillInAddress);
+    }
+    </script>
+    <script>
+    function showHideMilkType() {
+        if(document.getElementById('form_milk').checked) {
+            document.getElementById('form_milktype').style.display='block';
+            document.getElementById('milktype_label').style.display='block';
+        }
+        else {
+            document.getElementById('form_milktype').style.display='none';
+            document.getElementById('milktype_label').style.display='none';
+        }
+    }
+    
+    </script>
+{% endblock %}
+
+ 
+
+{% block javascripts %}
+    <script src="/js/main.js"></script>
+
+{% endblock %}

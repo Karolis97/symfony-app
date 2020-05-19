@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Kavos užsakymai{% endblock %}
+
+{% block body %}
+  {% if coffee %}
+    <table id="coffee" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Pieno tipas</th>
+          <th>Puodelio dydis</th>
+          <th>Pristatymo adresas</th>
+          <th>Pristatymo laikas</th>
+          <th>Veiksmai</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for coffee in coffee %}
+          <tr>
+            {% if coffee.milktype == NULL %}
+            <td>-</td>
+            {% else %}
+            <td>{{ coffee.milktype }}</td>
+            {% endif %}
+            <td>{{ coffee.cupsize }}</td>
+            <td>{{ coffee.location }}</td>
+            <td>{{ coffee.deliveron|date('Y-m-d H:i') }}</td>
+            <td>
+              <a href="/coffee/json/{{ coffee.id }}" class="btn btn-dark">JSON</a>
+              <a href="/coffee/xml/{{ coffee.id }}" class="btn btn-light">XML</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>Šiuo metu užsakymų nėra.</p>
+  {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+  <script src="/js/main.js"></script>
+{% endblock %}

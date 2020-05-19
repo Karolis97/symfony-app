@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gėlių užsakymas{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+    <script>
+    var form_address;
+    function initAutocomplete() {
+        form_address = new google.maps.places.Autocomplete(
+        document.getElementById('form_address'), {types: ['geocode']});
+        form_address.setFields(['address_component']);
+        form_address.addListener('place_changed', fillInAddress);
+    }
+    </script>
+{% endblock %}
+
+ 
+
+{% block javascripts %}
+    <script src="/js/main.js"></script>
+
+{% endblock %}

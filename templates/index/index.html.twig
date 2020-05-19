@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pagrindinis{% endblock %}
+
+{% block body %}
+<div align="center">
+   <div class="row">
+     <div class="col-md-6">
+        <button type="button" onclick="window.location.href='/coffee/new'" class="btn btn-primary" style="width:100%; font-size: 30px;">Užsisakyti kavą</button>
+     </div>
+    <div class="col-md-6">
+         <button type="button" onclick="window.location.href='/flowers/new'" class="btn btn-primary" style="width:100%; font-size: 30px;">Užsisakyti gėlių puokštę</button>
+     </div>
+</div>
+{% endblock %}
